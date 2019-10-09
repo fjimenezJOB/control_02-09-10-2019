@@ -6,26 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Links css y iconos -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    
     
     <title>{% block title %} Voltex {% endblock %} </title>
 </head>
 <body>
     <section class="section">
         <div class="container">
-            {% block header %}
+            <header>
+                {% block header %}
 
-            {% endblock %}
+                {% endblock %}
+            </header>
+            <main>
+                {% block main %}
 
-            {% block main %}
+                {% endblock %}
+            </main>
+            <footer>
+                {% block footer %}
 
-            {% endblock %}
-            
-            {% block footer %}
-
-            {% endblock %}
+                {% endblock %}
+            </footer>
         </div>
     </section>
 </body>

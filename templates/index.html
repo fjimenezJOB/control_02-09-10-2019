@@ -1,25 +1,39 @@
 {% extends 'base.html' %}
     {% block title %}
         {{ super() }}
-            - Inicio
+            - Calculadora
     {% endblock %}
+
+{% block header %}
+    <h1  class="titulo" >Bienvenid@ a tu calculadora favorita</h1>
+    
+{% endblock %}
 
 {% block main %}
 
-    <h1>Bienvenido a tu calculadora favorita</h1>
+    <div class="calculadora">
 
-    <form action="/" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        {{ formulario.numero1 }}
-        {{ formulario.operacion }}
-        {{ formulario.numero2 }}
+        <form action="/" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            {{ formulario.numero1 }}
+            {{ formulario.operacion }}
+            {{ formulario.numero2 }}
 
-        <button class="button is-info" type="submit">Calcular</button>
-    
-    </form>
+            <button class="button is-info" type="submit">Calcular</button>
+        </form>
+        {% if resultado %}
+            <h5 class="resultado" >Tu resultado es: {{ resultado }}</h5>
+        {% endif %}
+</div>
 
-    {% if resultado %}
-        <h5>Tu resultado es: {{ resultado }}</h5>
-    {% endif %}
+<div class="historial">
+    <h1 class="historial_titulo">Operaciones realizadas :</h1>
+    <ul>
+        {% for line in lineas %}
+            <li>{{ line }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
 
 {% endblock %}

@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(231, 229, 229);
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif ;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    " titulo historial"
+    " calculadora historial";
+    justify-content: center;
+    align-items: center;
+}
+
+.calculadora{
+    grid-area: calculadora;
+    grid-template-rows: 1fr 50%;
+}
+
+.titulo{
+    grid-area: titulo
+}
+
+.historial{
+    grid-area: historial;
+}
