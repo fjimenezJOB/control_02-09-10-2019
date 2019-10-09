@@ -1,11 +1,12 @@
 # Aqui estan los metodos con las operaciones de la calculadora
 
+
 class Calculadora:
 
     numero01 = 0
     numero02 = 0
 
-    def __init__(self):
+    def __init__(self, numero01, numero02):
         self.numero01 = numero01
         self.numero02 = numero02
 

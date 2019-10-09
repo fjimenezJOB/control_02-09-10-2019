@@ -1,38 +1,37 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import CsrfProtect
-import form as form
-import calculadora as c
+import form as f
+# import calculadora as c
 
 app = Flask(__name__)
 app.secret_key = 'super_calculator'
 csrf = CsrfProtect(app)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    formulario = form.Formulario()
-    return render_template('index.html', formulario=formulario)
+    formulario = f.Formulario()
+    if request.method == 'POST':
+        num1 = int(request.form.get('numero1'))
+        num2 = int(request.form.get('numero2'))
+        operacion = request.form.get('operacion')
 
+        if operacion == '+':
+            resultado = num1 + num2
 
-@app.route('/calcular', methods=['GET', 'POST'])
-def calcular():
-    numero01 = request.form.get('numero01')
-    numero02 = request.form.get('numero02')
-    operacion = request.form.get('operacion')
+        elif operacion == '-':
+            resultado = num1 - num2
 
-    if operacion == '+':
-        resultado = c.Calculadora.sumar(numero01, numero02)
+        elif operacion == 'x':
+            resultado = num1 * num2
 
-    elif operacion == '-':
-        resultado = c.Calculadora.restar(numero01, numero02)
+        elif operacion == '/':
+            resultado = num1 / num2
+    else:
+        resultado = 0
 
-    elif operacion == 'x':
-        resultado = c.Calculadora.multiplicar(numero01, numero02)
+    return render_template('index.html', formulario=formulario, resultado = resultado)
 
-    elif operacion == '/':
-        resultado = c.Calculadora.dividir(numero01, numero02)
-
-    return render_template('resultado.html', resultado=resultado)
 
 
 if __name__ == "__main__":
