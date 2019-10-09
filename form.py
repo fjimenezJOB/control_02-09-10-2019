@@ -1,7 +1,7 @@
 from wtforms import Form
 from wtforms import validators
 from wtforms import HiddenField
-from wtforms import NumberField
+from wtforms import IntegerField
 from wtforms import SelectField
 
 
@@ -12,7 +12,7 @@ def honeypot_len(form, field):
 
 class Formulario(Form):
 
-    numero01 = NumberField('Numero01: ', [
+    numero01 = IntegerField('Numero01: ', [
         validators.required('Numero requerido!!!'),
         validators.length(min=1, max=100, message='Numero demasiado largo!!!')
     ])
@@ -21,7 +21,7 @@ class Formulario(Form):
         choices=[('+', 'sumar'), ('-', 'restar'), ('x', 'multiplicar'), ('/', 'dividir')
     ])
 
-    numero02 = NumberField('Numero02: ', [
+    numero02 = IntegerField('Numero02: ', [
         validators.required('Numero requerido!!!'),
         validators.length(min=1, max=100, message='Numero demasiado largo!!!')
     ])

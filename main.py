@@ -1,15 +1,21 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import CsrfProtect
 import form as form
-import Calculadora as c
+import calculadora as c
 
 app = Flask(__name__)
+app.secret_key = 'super_calculator'
 csrf = CsrfProtect(app)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def home():
     formulario = form.Formulario()
+    return render_template('index.html', formulario=formulario)
+
+
+@app.route('/calcular', methods=['GET', 'POST'])
+def calcular():
     numero01 = request.form.get('numero01')
     numero02 = request.form.get('numero02')
     operacion = request.form.get('operacion')
@@ -20,13 +26,13 @@ def home():
     elif operacion == '-':
         resultado = c.Calculadora.restar(numero01, numero02)
 
-    elif operacion =='x':
+    elif operacion == 'x':
         resultado = c.Calculadora.multiplicar(numero01, numero02)
 
     elif operacion == '/':
         resultado = c.Calculadora.dividir(numero01, numero02)
 
-    return render_template('index.html', **formulario, resultado = resultado)
+    return render_template('resultado.html', resultado=resultado)
 
 
 if __name__ == "__main__":

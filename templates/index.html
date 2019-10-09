@@ -8,7 +8,8 @@
 
     <h1>Bienvenido a tu calculadora favorita</h1>
 
-    <form action="/" method="post">
+    <form action="/calcular" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
         {{ formulario.numero01 }}
         {{ formulario.operacion }}
         {{ formulario.numero02 }}
