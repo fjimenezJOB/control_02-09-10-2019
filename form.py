@@ -17,12 +17,13 @@ class Formulario(Form):
         validators.length(min=1, max=100, message='Numero demasiado largo!!!')
     ])
 
-    operación = SelectField('Seleciona la operación:',
-        choices=[('+', 'sumar'), ('-', 'restar'), ('x', 'multiplicar'), ('%', 'dividir')])
+    operacion = SelectField('Seleciona la operación:',
+        choices=[('+', 'sumar'), ('-', 'restar'), ('x', 'multiplicar'), ('/', 'dividir')
+    ])
 
     numero02 = NumberField('Numero02: ', [
         validators.required('Numero requerido!!!'),
         validators.length(min=1, max=100, message='Numero demasiado largo!!!')
-
-    # trampa honeypot
-    honeypot=HiddenField('', [honeypot_len])
+    ])
+    # Trampa Honeypot
+    honeypot = HiddenField('', [honeypot_len])
