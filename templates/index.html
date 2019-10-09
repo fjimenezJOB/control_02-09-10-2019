@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+    {% block title %}
+        {{ super() }}
+            - Inicio
+    {% endblock %}
+
+{% block main %}
+
+    <h1>Bienvenido a tu calculadora favorita</h1>
+
+    <form action="/" method="post">
+        {{ formulario.numero01 }}
+        {{ formulario.operacion }}
+        {{ formulario.numero02 }}
+
+        <button class="button is-info" type="submit">Calcular</button>
+    
+    </form>
+
+{% endblock %}
