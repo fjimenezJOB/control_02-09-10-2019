@@ -10,13 +10,14 @@ app.secret_key = 'super_calculator'
 csrf = CsrfProtect(app)
 # **********************************
 
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
-# Para sacar formulario de wtforms
+    # Para sacar formulario de wtforms
     formulario = f.Formulario()
 # *******************************
     if request.method == 'POST':  # Para que no pete la primera vez que entran a la pagina
-    # Recoge la información del formulario
+        # Recoge la información del formulario
         num1 = int(request.form.get('numero1'))
         num2 = int(request.form.get('numero2'))
         operacion = request.form.get('operacion')

@@ -5,7 +5,7 @@
     {% endblock %}
 
 {% block header %}
-    <h1  class="titulo" >Bienvenid@ a tu calculadora favorita</h1>
+    <h1  class="titulo is-size-3" >Bienvenid@ a tu calculadora favorita</h1> <br>
     
 {% endblock %}
 
@@ -15,25 +15,24 @@
 
         <form action="/" method="POST">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-            {{ formulario.numero1 }}
-            {{ formulario.operacion }}
-            {{ formulario.numero2 }}
+            {{ formulario.numero1 }} <br>
+            {{ formulario.operacion }}<br>
+            {{ formulario.numero2 }} <br>
 
-            <button class="button is-info" type="submit">Calcular</button>
+            <button class="button is-primary" type="submit">Calcular</button>
         </form>
+
         {% if resultado %}
             <h5 class="resultado" >Tu resultado es: {{ resultado }}</h5>
+            <br>
+            </div>
+            <div class="historial ">
+                <h1 class="is-size-5">Operaciones realizadas :</h1>
+                <ul class="is-size-6">
+                    {% for line in lineas %}
+                        <li>{{ line }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
-</div>
-
-<div class="historial">
-    <h1 class="historial_titulo">Operaciones realizadas :</h1>
-    <ul>
-        {% for line in lineas %}
-            <li>{{ line }}</li>
-        {% endfor %}
-    </ul>
-</div>
-
-
 {% endblock %}
